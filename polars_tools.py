@@ -26,10 +26,10 @@ def down_cast_numeric_cols(lazy_frame) -> "LazyFrame":
                 lf_test.collect()
             except Exception:
                 print(f"Couldn't cast {column} to {dt_type}")
-                break
             else:
                 lazy_frame = lazy_frame.with_columns(expr)
                 print(f"Casting {column} to {dt_type}")
+                break
     
     # Final LazyFrame with downcasted columns
     lazy_frame = lazy_frame.collect().lazy()
